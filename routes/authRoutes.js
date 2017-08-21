@@ -1,5 +1,5 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth2").Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 module.exports = app => {
 
@@ -15,7 +15,10 @@ module.exports = app => {
     })
   );
 
-  app.get("/auth/google/callback", passport.authenticate("google"));
+
+    app.get("/auth/google/callback",passport.authenticate("google"));
+
+
   //--END Google Specfically Youtube account access -- //
 
 
@@ -25,7 +28,7 @@ module.exports = app => {
     res.send(req.user);
   })
 
-  app.get("/api/user", (req, res) => {    
+  app.get("/api/user", (req, res) => {
     res.send(req.user)
   });
 
